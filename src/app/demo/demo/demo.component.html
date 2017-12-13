@@ -1,0 +1,8 @@
+<h3>Demo home</h3>
+
+<demo-sizer [size]="12" (sizeChange)="$event"></demo-sizer>
+
+<demo-sizer [(size)]="fontSize"></demo-sizer>
+<div [style.font-size.px]="fontSize">
+  wenzi文字
+</div>

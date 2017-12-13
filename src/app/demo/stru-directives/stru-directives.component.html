@@ -1,0 +1,81 @@
+<h1>Built-in structural directives</h1>
+<p>
+  结构型指令的职责是HTML布局。 它们塑造或重塑DOM的结构，这通常是通过添加、移除和操纵它们所附加到的宿主元素来实现的。
+</p>
+<p>
+  Structural directives are responsible for HTML layout.They shape or reshape the DOM's structure, typically by adding, removing,
+  and manipulating the host elements to which they are attached.
+</p>
+
+<h2>*ngIf指令</h2>
+<div class="alert alert-info" role="alert">
+  <p>
+    <strong>隐藏子树和用NgIf排除子树是截然不同的。</strong>
+  </p>
+  <p>当隐藏子树时，它仍然留在 DOM 中。 子树中的组件及其状态仍然保留着。 即使对于不可见属性，Angular 也会继续检查变更。 子树可能占用相当可观的内存和运算资源。</p>
+  <p>当NgIf为false时，Angular 从 DOM 中物理地移除了这个元素子树。 它销毁了子树中的组件及其状态，也潜在释放了可观的资源，最终让用户体验到更好的性能。</p>
+  <p>显示/隐藏的技术对于只有少量子元素的元素是很好用的，但要当心别试图隐藏大型组件树。相比之下，NgIf则是个更安全的选择。</p>
+</div>
+<div>
+  <h3>示例</h3>
+  <div>
+    <p *ngIf="!currentUser">login</p>
+    <code>&lt;p *ngIf="!currentUser"&gt; login&lt;/p&gt; </code>
+  </div>
+
+  <div>
+    <p [style.display]='!currentUser ?"block":"none" '>login</p>
+    <code>&lt;p [style.display]='!currentUser ?"block":"none" '&gt; login&lt;/p&gt; </code>
+  </div>
+  <div>
+    <p [class.hidden]="currentUser">login</p>
+    <code>&lt;p [class.hidden]="!currentUser"&gt; login&lt;/p&gt; </code>
+  </div>
+</div>
+<h4>防范空指针错误</h4>
+<div class="alert alert-info" role="alert">
+  <p>ngIf指令通常会用来防范空指针错误。 而显示/隐藏的方式是无法防范的，当一个表达式尝试访问空值的属性时，Angular就会抛出一个异常。</p>
+</div>
+<div>
+  <div *ngIf="!currentUser">
+    {{ hero.nickName }}
+  </div>
+  <code [innerHtml]="htmlCodeGuardAgainst">
+  </code>
+</div>
+
+
+<h2>*ngFor指令</h2>
+<div class="alert alert-info" role="alert">
+  <p>
+    <strong>NgFor 微语法</strong>
+  </p>
+  <p>字符串"let hero of heroes"的含义是：</p>
+  <p>取出heroes数组中的每个英雄，把它存入局部变量hero中，并在每次迭代时对模板 HTML 可用</p>
+  <p>Angular 把这个指令翻译成了一个
+    <code>&lt;ng-template&gt;</code>包裹的宿主元素，然后使用这个模板重复创建出一组新元素，并且绑定到列表中的每一个hero。</p>
+</div>
+<div>
+  <ul>
+    <li *ngFor="let user of users">
+      {{user.name}}
+    </li>
+  </ul>
+</div>
+
+<div class="container-fliud">
+  <div class="row">
+    <button (click)="addUser()"> add user</button>
+    <input [(ngModel)]="tempString" />
+  </div>
+  <div class="row">
+    <div class="col-md-6 pull-left">
+      <h3>带索引的*ngFor</h3>
+      <app-userlist [users]="users"></app-userlist>
+    </div>
+    <div class="col-md-6">
+      <h3>带trackBy的*ngFor</h3>
+      <app-userlist-trackby [users]="users" [tempString]="tempString"></app-userlist-trackby>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="row main-container">
+  <!-- side nav -->
+  <div class="col-sm-3 col-md-2 sidebar">
+
+    <ul class="nav-sidebar">
+      <li>
+        <a routerLink='./home' routerLinkActive="active">Home</a>
+      </li>
+      <li>
+        <a routerLink='./sizer' routerLinkActive="active">sizer</a>
+      </li>
+      <li>
+        <a routerLink='./attr-directives' routerLinkActive="active">Built-in attribute directives</a>
+      </li>
+      <li>
+        <a routerLink='./stru-directives' routerLinkActive="active">Built-in structural directives</a>
+      </li>
+    </ul>
+    <ul class="nav-sidebar">
+      <li>
+        <a routerLink='./demo' routerLinkActive="active">More navigation</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- main -->
+  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

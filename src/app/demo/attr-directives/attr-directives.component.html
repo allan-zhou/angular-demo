@@ -1,0 +1,54 @@
+<h1>Built-in attribute directives</h1>
+<p>
+    属性型指令会监听和修改其它HTML元素或组件的行为、元素属性（Attribute）、DOM属性（Property）。 它们通常会作为HTML属性的名称而应用在元素上。
+    
+</p>
+<p>
+    Attribute directives listen to and modify the behavior of other HTML elements, attributes, properties, and components. They are usually applied to elements as if they were HTML attributes, hence the name.
+</p>
+<h2>ngClass</h2>
+<div>
+  <h3>方式1：直接设置 class attribute</h3>
+  <p class="text-decoration font-style background-color">CSS 类绑定 是添加或删除单个类的最佳途径。</p>
+
+  <h3>方式2：CSS 类名绑定</h3>
+  <p class="text-decoration font-style background-color" [class.text-decoration]="!true" [class.font-style]="true">这是一个或者全有或者全无的替换型绑定。</p>
+
+  <h3>方式3：NgClass</h3>
+  通过绑定到NgClass，可以同时添加或移除多个类
+  <p [ngClass]="pClass">过绑定到NgClass，可以同时添加或移除多个类</p>
+  <p [ngClass]="pClass">当想要同时添加或移除多个 CSS 类时，NgClass指令可能是更好的选择</p>
+</div>
+
+<h2>ngStyle</h2>
+<div>
+  <h3>方式1：样式绑定</h3>
+  <p [style.font-style]="isItalic ? 'italic':'normal'">样式绑定是设置单一样式值的简单方式。</p>
+
+  <h3>ngStyle</h3>
+  <p [ngStyle]="pStyle">如果要同时设置多个内联样式，NgStyle指令可能是更好的选择。</p>
+</div>
+
+<h2>ngModel</h2>
+<div>
+  <div class="alert alert-info" role="alert">
+    使用 ngModel 时需要 FormsModule
+  </div>
+  {{username}}
+  <h3>方式1</h3>
+  <input [(ngModel)]="username" />
+  <code>&lt; input [(ngModel)]="username" &gt;</code>
+
+  <h3>方式2</h3>
+  <input [value]="username" (input)="username=$event.target.value"/>
+  <code>&lt; input [value]="username" (input)="username=$event.target.value" &gt;</code>
+
+  <h3>方式3</h3>
+  <p>ngModel指令通过自己的输入属性ngModel和输出属性ngModelChange隐藏了那些细节。</p>
+  <input [ngModel]="username" (ngModelChange)="username=$event">
+  <code>&lt; input [ngModel]="username" (ngModelChange)="username=$event" &gt;</code>
+
+  <h3>ngModel展开方式</h3>
+  <input [ngModel]="username" (ngModelChange)="toUpperName($event)">
+  <code>&lt; input [ngModel]="username" (ngModelChange)="toUpperName($event)" &gt;</code>
+</div>

@@ -1,0 +1,8 @@
+{{changeLog }}
+<ul>
+  <li *ngFor="let user of users; let i=index; let even=even; let odd=odd; let first=first; let last=last;" [class.even]="even"
+    [class.odd]="odd" [class.first]="first" [class.last]="last">
+    <p>{{i+1}} - {{user.name}}</p>
+    <p>even: {{even}} odd: {{odd}} first: {{first}} last: {{last}}</p>
+  </li>
+</ul>

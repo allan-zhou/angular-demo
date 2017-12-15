@@ -1,8 +1,39 @@
 <h3>Demo home</h3>
 
-<demo-sizer [size]="12" (sizeChange)="$event"></demo-sizer>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <h5>方式１：属性绑定＋事件绑定</h5>
+      <demo-sizer [size]="12" (sizeChange)="$event"></demo-sizer>
+      <code>
+            &lt;demo-sizer [size]="12" (sizeChange)="$event"&gt;&lt;/demo-sizer&gt;
+        </code>
+    </div>
+    <div class="col-md-4">
+      <h5>方式２:双向绑定写法</h5>
+      <demo-sizer #sizer [(size)]="fontSize"></demo-sizer>
+      <code>
+            &lt;demo-sizer #sizer [(size)]="fontSize"&gt;&lt;/demo-sizer&gt;
+        </code>
+      <div [style.font-size.px]="fontSize">
+        wenzi文字
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h5>方式３：使用模板引用变量与子组件通讯</h5>
+      <div>
+        <button (click)="sizer.inc()">sizer.inc() </button>
+        <code>
+            &lt;button (click)="sizer.inc()"&gt;sizer.inc()&lt;/button&gt;
+        </code>
+      </div>
+      <div>
+        <button (click)="sizer.dec()">sizer.dec()</button>
+        <code>
+            &lt;button (click)="sizer.dec()"&gt;sizer.dec()&lt;/button&gt;
+        </code>
+      </div>
 
-<demo-sizer [(size)]="fontSize"></demo-sizer>
-<div [style.font-size.px]="fontSize">
-  wenzi文字
+    </div>
+  </div>
 </div>

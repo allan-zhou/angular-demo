@@ -5,7 +5,7 @@
 var Rx = require('rxjs/Rx');
 
 var foo = Rx.Observable.create(function (observer) {
-    console.log('hello');
+    console.log('foo');
     observer.next('1');
 });
 

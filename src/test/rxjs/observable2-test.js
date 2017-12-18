@@ -7,7 +7,7 @@
 var Rx = require('rxjs/Rx');
 
 var observable = Rx.Observable.create(function (observer) {
-    console.log('hello');
+    console.log('observable');
     observer.next('1');
     observer.next('2');
     observer.next('3');
@@ -24,7 +24,7 @@ console.log('after');
 // asynchronously　异步
 
 var observable2 = Rx.Observable.create(function (observer) {
-    console.log('foo2');
+    console.log('observable2');
     observer.next('4');
     observer.next('5');
     observer.next('6');

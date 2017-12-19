@@ -13,12 +13,13 @@ export const routes: Routes = [
                 path: '',
                 children: [
                     {
-                        path: '',
+                        path: 'projects',
                         component: ProjectListComponent
                     },
                     {
-                        path: 'projects',
-                        component: ProjectListComponent
+                        path: '',
+                        pathMatch:'full',
+                        redirectTo:'projects'
                     }
                 ]
             }
